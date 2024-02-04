@@ -11,6 +11,7 @@ const cors_1 = __importDefault(require("cors"));
 const logger_1 = require("./helpers/logger");
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const client_routes_1 = __importDefault(require("./routes/client.routes"));
+const note_routes_1 = __importDefault(require("./routes/note.routes"));
 const PORT = process.env.PORT || 5000;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
@@ -18,6 +19,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/api", auth_routes_1.default);
 app.use("/api/clients", client_routes_1.default);
+app.use("/api/notes", note_routes_1.default);
 app.use((req, res) => {
     res.status(404).json({ message: "404: Route Not Found" });
 });

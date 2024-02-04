@@ -42,6 +42,7 @@ export const createClient = expressAsyncHandler(async (req, res) => {
 
   res.status(201).json({ success: true, data: createdClient });
 });
+
 //@desc Update a client
 //!@route PUT /api/clients/:id
 //@access private
