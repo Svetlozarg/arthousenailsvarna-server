@@ -38,13 +38,7 @@ exports.getSingleEvent = (0, express_async_handler_1.default)((req, res) => __aw
 //@access private
 exports.createEvent = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { event_id, title, start, end, client_id, treatment, note } = req.body;
-    if (!title ||
-        !start ||
-        !end ||
-        !client_id ||
-        !event_id ||
-        !treatment ||
-        !note) {
+    if (!title || !start || !end || !client_id || !event_id || !treatment) {
         res.status(400);
         throw new Error("All fields are required");
     }
@@ -65,7 +59,7 @@ exports.createEvent = (0, express_async_handler_1.default)((req, res) => __await
 //@access private
 exports.updateEvent = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { title, start, end, client_id, treatment, note } = req.body;
-    if (!title || !start || !end || !client_id || !treatment || !note) {
+    if (!title || !start || !end || !client_id || !treatment) {
         res.status(400);
         throw new Error("All fields are required");
     }

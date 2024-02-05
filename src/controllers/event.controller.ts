@@ -27,15 +27,7 @@ export const getSingleEvent = expressAsyncHandler(async (req, res) => {
 export const createEvent = expressAsyncHandler(async (req, res) => {
   const { event_id, title, start, end, client_id, treatment, note } = req.body;
 
-  if (
-    !title ||
-    !start ||
-    !end ||
-    !client_id ||
-    !event_id ||
-    !treatment ||
-    !note
-  ) {
+  if (!title || !start || !end || !client_id || !event_id || !treatment) {
     res.status(400);
     throw new Error("All fields are required");
   }
@@ -61,7 +53,7 @@ export const createEvent = expressAsyncHandler(async (req, res) => {
 export const updateEvent = expressAsyncHandler(async (req, res) => {
   const { title, start, end, client_id, treatment, note } = req.body;
 
-  if (!title || !start || !end || !client_id || !treatment || !note) {
+  if (!title || !start || !end || !client_id || !treatment) {
     res.status(400);
     throw new Error("All fields are required");
   }
