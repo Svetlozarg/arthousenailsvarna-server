@@ -25,9 +25,17 @@ export const getSingleEvent = expressAsyncHandler(async (req, res) => {
 //!@route POST /api/event/create
 //@access private
 export const createEvent = expressAsyncHandler(async (req, res) => {
-  const { event_id, title, start, end, client_id } = req.body;
+  const { event_id, title, start, end, client_id, treatment, note } = req.body;
 
-  if (!title || !start || !end || !client_id || !event_id) {
+  if (
+    !title ||
+    !start ||
+    !end ||
+    !client_id ||
+    !event_id ||
+    !treatment ||
+    !note
+  ) {
     res.status(400);
     throw new Error("All fields are required");
   }
@@ -38,6 +46,8 @@ export const createEvent = expressAsyncHandler(async (req, res) => {
     start,
     end,
     client_id,
+    treatment,
+    note,
   });
 
   const createdEvent = await event.save();
@@ -49,9 +59,9 @@ export const createEvent = expressAsyncHandler(async (req, res) => {
 //!@route PUT /api/event/:id
 //@access private
 export const updateEvent = expressAsyncHandler(async (req, res) => {
-  const { title, start, end, client_id } = req.body;
+  const { title, start, end, client_id, treatment, note } = req.body;
 
-  if (!title || !start || !end || !client_id) {
+  if (!title || !start || !end || !client_id || !treatment || !note) {
     res.status(400);
     throw new Error("All fields are required");
   }
@@ -63,6 +73,8 @@ export const updateEvent = expressAsyncHandler(async (req, res) => {
       start,
       end,
       client_id,
+      treatment,
+      note,
     }
   );
 

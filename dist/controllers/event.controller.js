@@ -37,8 +37,14 @@ exports.getSingleEvent = (0, express_async_handler_1.default)((req, res) => __aw
 //!@route POST /api/event/create
 //@access private
 exports.createEvent = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { event_id, title, start, end, client_id } = req.body;
-    if (!title || !start || !end || !client_id || !event_id) {
+    const { event_id, title, start, end, client_id, treatment, note } = req.body;
+    if (!title ||
+        !start ||
+        !end ||
+        !client_id ||
+        !event_id ||
+        !treatment ||
+        !note) {
         res.status(400);
         throw new Error("All fields are required");
     }
@@ -48,6 +54,8 @@ exports.createEvent = (0, express_async_handler_1.default)((req, res) => __await
         start,
         end,
         client_id,
+        treatment,
+        note,
     });
     const createdEvent = yield event.save();
     res.status(201).json({ success: true, data: createdEvent });
@@ -56,8 +64,8 @@ exports.createEvent = (0, express_async_handler_1.default)((req, res) => __await
 //!@route PUT /api/event/:id
 //@access private
 exports.updateEvent = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { title, start, end, client_id } = req.body;
-    if (!title || !start || !end || !client_id) {
+    const { title, start, end, client_id, treatment, note } = req.body;
+    if (!title || !start || !end || !client_id || !treatment || !note) {
         res.status(400);
         throw new Error("All fields are required");
     }
@@ -66,6 +74,8 @@ exports.updateEvent = (0, express_async_handler_1.default)((req, res) => __await
         start,
         end,
         client_id,
+        treatment,
+        note,
     });
     if (!event) {
         res.status(404);

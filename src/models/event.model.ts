@@ -7,6 +7,8 @@ export interface IEvent extends Document {
   start: Date;
   end: Date;
   client_id: string;
+  treatment: string;
+  note: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -30,6 +32,14 @@ const eventSchema = new Schema(
       required: true,
     },
     client_id: {
+      type: String,
+      required: true,
+    },
+    treatment: {
+      type: String,
+      required: true,
+    },
+    note: {
       type: String,
       required: true,
     },
