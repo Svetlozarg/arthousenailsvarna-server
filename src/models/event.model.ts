@@ -41,7 +41,7 @@ const eventSchema = new Schema(
     },
     note: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }

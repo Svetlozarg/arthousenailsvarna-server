@@ -28,7 +28,7 @@ const eventSchema = new mongoose_1.Schema({
     },
     note: {
         type: String,
-        required: true,
+        required: false,
     },
 }, { timestamps: true });
 const Event = mongoose_1.models.Event || (0, mongoose_1.model)("Event", eventSchema);
