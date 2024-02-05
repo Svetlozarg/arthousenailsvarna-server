@@ -7,6 +7,7 @@ import { error, success } from "./helpers/logger";
 import authRoutes from "./routes/auth.routes";
 import clientsRoutes from "./routes/client.routes";
 import notesRoutes from "./routes/note.routes";
+import eventRoutes from "./routes/event.routes";
 
 const PORT = process.env.PORT || 5000;
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", authRoutes);
 app.use("/api/clients", clientsRoutes);
 app.use("/api/notes", notesRoutes);
+app.use("/api/event", eventRoutes);
 app.use((req: Request, res: Response) => {
   res.status(404).json({ message: "404: Route Not Found" });
 });
