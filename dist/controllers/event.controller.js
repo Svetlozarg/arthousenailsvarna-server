@@ -49,7 +49,7 @@ exports.createEvent = (0, express_async_handler_1.default)((req, res) => __await
         end,
         client_id,
         treatment,
-        note,
+        note: note ? note : "",
     });
     const createdEvent = yield event.save();
     res.status(201).json({ success: true, data: createdEvent });
@@ -69,7 +69,7 @@ exports.updateEvent = (0, express_async_handler_1.default)((req, res) => __await
         end,
         client_id,
         treatment,
-        note,
+        note: note ? note : "",
     });
     if (!event) {
         res.status(404);

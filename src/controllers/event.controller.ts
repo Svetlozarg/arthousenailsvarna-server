@@ -39,7 +39,7 @@ export const createEvent = expressAsyncHandler(async (req, res) => {
     end,
     client_id,
     treatment,
-    note,
+    note: note ? note : "",
   });
 
   const createdEvent = await event.save();
@@ -66,7 +66,7 @@ export const updateEvent = expressAsyncHandler(async (req, res) => {
       end,
       client_id,
       treatment,
-      note,
+      note: note ? note : "",
     }
   );
 
